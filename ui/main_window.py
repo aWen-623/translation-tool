@@ -526,4 +526,4 @@ class MainWindow(QWidget):
             self.move(x, y)
             self.show()
             self.activateWindow()
-            self.input_box.setFocus()
+            QTimer.singleShot(100, self.input_box.setFocus)

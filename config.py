@@ -2,6 +2,7 @@
 
 import json
 import os
+import sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,7 +14,10 @@ TENCENT_SECRET_ID = os.getenv("TENCENT_SECRET_ID", "")
 TENCENT_SECRET_KEY = os.getenv("TENCENT_SECRET_KEY", "")
 
 # ── Paths ──
-_BASE = os.path.dirname(os.path.abspath(__file__))
+if getattr(sys, 'frozen', False):
+    _BASE = os.path.dirname(sys.executable)
+else:
+    _BASE = os.path.dirname(os.path.abspath(__file__))
 HISTORY_FILE = os.path.join(_BASE, "history.json")
 SETTINGS_FILE = os.path.join(_BASE, "settings.json")
 
